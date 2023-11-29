@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download ||</title>
+    <link rel="stylesheet" href="movie_details.css">
+</head>
+<body>
+    <h2 id="movieTitle"></h2>
+    <img id="moviePoster" src="" alt="Movie Poster">
+    <p id="movieYear"></p>
+    <p id="description"></p>
+    <a id="downloadLink" href="" target="_blank">Download</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieTitle = urlParams.get("title");
+            const description = urlParams.get("description");
+            const moviePoster = urlParams.get("poster");
+            const movieYear = urlParams.get("year");
+            const downloadLink = urlParams.get("downloadLink");
+
+            document.getElementById("movieTitle").textContent = movieTitle;
+            document.getElementById("description").textContent = description; 
+            document.getElementById("moviePoster").src = moviePoster;
+            document.getElementById("movieYear").textContent = `Year: ${movieYear}`;
+            document.getElementById("downloadLink").href = downloadLink;
+        });
+    </script>
+</body>
+</html>

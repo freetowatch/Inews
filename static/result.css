@@ -1,0 +1,59 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #e44d26;
+}
+
+.error {
+    color: #e44d26;
+    font-weight: bold;
+}
+
+.recipe {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.recipe img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.recipe h2 {
+    color: #e44d26;
+}
+
+.recipe p {
+    margin-bottom: 10px;
+}
+
+.recipe a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.recipe a:hover {
+    text-decoration: underline;
+}

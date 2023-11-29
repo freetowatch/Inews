@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+    }
+
+    h1 {
+        color: #e44d26;
+    }
+
+    a {
+        display: inline-block;
+        margin-right: 20px;
+        font-size: 1.5em;
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        transform: translate(200px, -1px);
+        
+    }
+
+    a:hover {
+        color: #e44d26;
+        text-decoration: none;
+    }
+
+    @media (max-width: 991px) {
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            transform: translate(-1px, -1px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e44d26;
+        }
+
+        a {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 1.5em;
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            transform: translate(40px, -1px);
+    
+        }
+
+        a:hover {
+            color: #e44d26;
+            text-decoration: none;
+        }
+        }
+</style>
+<script data-cfasync="false" src="/sw.js"></script>
+</head>
+<body>
+    <h1>Recipe Search</h1>
+    <hr>
+    <a href="News.html">News</a>
+    <a href="index.html">Food</a>
+    <a href="main.html">Movies</a>
+    <a href="systeme.html">Buy Products</a>
+    <script data-cfasync="false" src="//d2o8i1jpfoso49.cloudfront.net/?pjiod=1011669"></script>
+
+    <hr>
+    <form action="/search" method="post">
+        <label for="query">Enter a food item to search for recipes:</label>
+        <input type="text" id="query" name="query" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <script src="main.js"></script>
+</body>
+</html>

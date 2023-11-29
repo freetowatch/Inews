@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>FreeNet ||Movies</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="search-results-container">
+    <header>
+      <a href="" class="logo">
+        <img src="img/cooltext445071794435959.png" alt="FreeNet" />
+      </a>
+      <p class="twenty4">
+        Movies From 2024<br>20...
+      </p>
+<ul class="inews">
+      <li><a href="systeme.html">Buy Products</a></li>
+    </ul>
+
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </header>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-bar" placeholder="Search Movie">
+      <button id="search-button" onclick="filterMovies()"><i class="fas fa-search search-icon"></i>
+      </button>
+    </div>
+    <div class="content">
+      <h2>Watch The Best Movies & Shows</h2>
+    </div>
+    <div class="content2">
+      <h6>Watch on Any Device</h6>
+    </div>
+    <ul class="release">
+      <li><a href="release date.html">Movie Release Date</a></li>
+    </ul>
+    <a class="trail" onclick="toggleVideo();">
+      <img src="img/button-icon-png-21060-Windows.ico" alt="play button" width="20px" height="20px">
+      WATCH TRAILERS
+    </a>
+  </div>
+  <div class="trailer">
+    <video src="vid/This content is currently unavailable.mp4" controls="true" autoplay="true"></video>
+    <img src="img/Close.png" class="close" onclick="toggleVideo();">
+  </div>
+  <script src="mar.js"></script>
+  <div class="content3">
+    <h4 style="text-align: center;">this site only contains<a href="index.html" style="color: turquoise; text-decoration: none;"> movies </a></h4>
+  </div>
+  <div id="movieList"></div>
+
+  <script>
+    document.getElementById("searchInput").addEventListener("keyup", function(event) {
+      if (event.key === "Enter" || event.keyCode === 13) {
+        event.preventDefault();
+        filterMovies();
+      }
+    });
+
+    const apiKey = 'e219df36b2619f5cc6a76fb099ce062b';
+    const apiUrl = 'https://api.themoviedb.org/3/';
+
+    const moviesWithDownloadLinks = [
+      {
+        title: "Madame Web",
+        description: "Spin-off from Spider-Man centering on a clairvoyant mutant named Madame Web.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Madame web.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Lost Ladies",
+        description: "Ser Girl villocnk ejca eoc ejao c eeahfe fbuao rgfjab",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/Lost Ladies.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Mean Girls The Musical",
+        description: "Cady Heron is a hit with the Plastics, A-list girl clique at her new school and she makes mistake of falling for Aaron Samuels, ex-boyfriend of alpha Plastic Regina George.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/Mean-Girls the Musical.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Night Swim",
+        description: "Feature length version of the 2014 short film about a woman swimming in her pool at night terrorized by an evil spirit.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/Night Swim.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Beekeeper",
+        description: "In The Beekeeper, one man's brutal campaign for vengeance takes on national stakes after he is revealed to be a former operative of a powerful and clandestine organization known as 'Beekeepers'",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/the beekeeper.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+       {
+        title: "Hanu Man Film",
+        description: "Spider Girl villocnk ejca eoc ejao c eeahfe fbuao rgfjab",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/Hanu Man Film.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "IF",
+        description: "Follows a young girl who goes through a difficult experience and then begins to see everyone's imaginary friends who have been left behind as their real-life friends have grown up.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/if.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Distant",
+        description: "After crash-landing on an alien planet, an asteroid miner must contend with the challenges of his new surroundings, while making his way across the harsh terrain to the only other survivor – a woman who is trapped in her escape pod.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/Distant.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "El Muerto",
+        description: "plot unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/El Muerto.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Argylle",
+        description: "An introverted spy novelist is drawn into the activities of a sinister underground syndicate",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Argylle.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+       {
+        title: "Challengers",
+        description: "Follows three players who knew each other when they were teenagers as they compete in a tennis tournament to be the world-famous grand slam winner, and reignite old rivalries on and off the court.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Sep/Challengers.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Bob Marley: One Love",
+        description:"A look at the life of legendary reggae musician Bob Marley.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/one love.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Alto Knights",
+        description: "Vito Genovese and Frank Costello, a pair of Italian Americans who run two separate crime families in the mid-20th century. Genovese attempted to assassinate Costello in 1957, although Costello retired from the mob.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Alto Knights.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "A Quiet Place: Day One",
+        description: "Plot under wraps.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jun/A Quiet Place.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Cabrini",
+        description: "Spider Girl villocnk ejca eoc ejao c eeahfe fbuao rgfjab",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/Cabrini.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Dune 2",
+        description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Nov/Dune 2.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Elio",
+        description: "Elio struggles to fit in until he is transported by aliens and becomes the chosen one to be Earth's galactic ambassador while his mother Olga works on the top secret project to decode alien messages.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/elio.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Mickey 17",
+        description: "Plot under wraps.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/Mickey 17.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Rebel Moon Part Two: The Scargiver",
+        description: "Continuation of Rebel Moon (2023).",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Apr/Rebel Moon Part Two - The Scargiver.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "AND",
+        description: "plot unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Snow White And The Evil Queen",
+        description: "Live-action adaptation of the 1937 Disney animated film 'Snow White and the Seven Dwarfs'.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/Snow White.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Fall Guy",
+        description: "Plot undisclosed.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/The Fall Guy.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Godzilla x Kong: The New Empire",
+        description: "Plot kept under wraps.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Apr/Godzilla x Kong The New Empire.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Deadpool 3",
+        description: "Wolverine joins the 'merc with a mouth' in the third installment of the Deadpool film franchise.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Strangers: Chapter 1",
+        description: "A young couple drive cross-country toward a new beginning; unfortunately they have no choice but to stop in a secluded Airbnb in Oregon--and endure a night of terror against three masked strangers.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/nodate/The Strangers Chapter 1.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "It Ends with Us",
+        description: "Lily believes she's found true love with Ryle, but when a painful incident triggers past trauma, she must decide if love alone can carry her marriage through. However, things are complicated when her first love returns to her life.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/It Ends with Us.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title:  "Ghostbusters Sequel",
+        description: "Plot currently kept under wraps.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Someone Like You",
+        description: "Follows a young girl who's beautiful life is cemented on a lie, her redemption, sacrifices and her path through the acceptance of unconditional love and healing.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Apr/Someone Like You.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Alien: Romulus",
+        description: "Young people from a distant world must face the most terrifying life form in the universe.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/Alien Romulus.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Ministry of Ungentlemanly Warfare",
+        description: "The British military recruits a small group of highly-skilled soldiers to strike against Nazi forces behind enemy lines during World War II.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mid/The Ministry of Ungentlemanly Warfare.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Ark Of The Aadvark",
+        description: "plot Unknown",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Apr/The Ark Of The Aadvark.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Wicked: Part One",
+        description: "Wicked tells the story of Elphaba, the future Wicked Witch of the West and her relationship with Glinda, the Good Witch of the North. The first of a two-part feature film adaptation of the Broadway musical.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Nov/Wicked Part One.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Electric State",
+        description: "An orphaned teenager traverses the American West with a sweet but mysterious robot and an eccentric drifter in search of her younger brother.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/The Electric State.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Mufasa: The Lion King",
+        description: "Simba, having become king of the Pride Lands, is determined for his cub to follow in his paw prints while the origins of his late father Mufasa are explored.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/Mufasa The Lion King.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Passion Of The Christ: Resurrection",
+        description: "A sequel to The Passion of the Christ (2004) focuses on the events that occurred three days between the crucifixion and resurrection when Jesus Christ descended to Abraham's Bosom to preach and resurrect Old Testament saints.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/The Passion Of The Christ Ressurection.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Transformers One",
+        description: "An origin story set on Cybertron, home of both the Autobots and the Decepticons. The film is said to focus on the relationship between Optimus Prime and Megatron",
+        downloadLink:"https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/Transformers One.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Mobile Suit Gundam Seed Freedom",
+        description: "Movie sequel to Mobile Suit Gundam Seed Destiny (2004).",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/Mobile Suit Gundam Seed Freedom.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "A Family Affair (II)",
+        description: "An unexpected romance triggers comic consequences for a young woman, her mother, and her boss, grappling with the complications of love, sex, and identity.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Old Guard 2",
+        description: "Plot Unknown. Sequel to The Old Guard (2020).",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mid/The Old Guard 2.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "WWE Bash in Berlin",
+        description: "WWE Bash in Berlin is an upcoming professional wrestling pay-per-view (PPV) and livestreaming event produced by the American company WWE. It will be held for wrestlers from the promotion's Raw and SmackDown brand divisions. It will take place on Saturday, August 31, 2024, at the Mercedes-Benz Arena in Berlin, Germany, marking WWE's first PPV and livestreaming event to be held in the country.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/WWE Bash in Berlin.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Rush Hour 4",
+        description: "Plot Unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/nodate/Rush Hour 4.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Scream 7",
+        description: "In the next installment, the survivors of the Ghostface killings leave Woodsboro behind and start a fresh chapter in New York City.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/nodate/Scream 7.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Spiderman Beyond The Spiderverse",
+        description: "plot unknown",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/nodate/Spiderman Beyond The Spiderverse.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Crow",
+        description: "A modern re-imagining of the beloved character, The Crow, based on the original graphic novel by James O'Barr.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Thundermans Return",
+        description: "It centers on the family as they begin a new era of superhero crimefighting. When one save goes wrong, the Thundermans are sent back to Hiddenville.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mid/The Thundermans Return.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Return to Silent Hill",
+        description: "When a mysterious letter calls him back to Silent Hill in search of his lost love, James finds a once-recognizable town and encounters terrifying figures both familiar and new, and begins to question his own sanity.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Untitled Venom Let There Be Carnage Sequel",
+        description: "spider girl",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/Untitled Venom: Let There Be Carnage Sequel.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Theseus",
+        description: "The movie catapults the audience into the epic mythical adventure of the Greek hero Theseus. The film adheres closely to the original Theseus myth as recorded by Greek historian Plutarch in the year 75 A.C.E. The movie features the infamous Minotaur and the labyrinth as well as lesser known monsters, which appear in the ancient version of the myth.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Armored",
+        description: "A father and son working as security guards for an armored truck company encounter a team of would-be robbers while on a bridge. They become trapped and must come up with a plan to escape and ensure their survival.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Fighter",
+        description: "FIGHTER is India's first aerial action film releasing in theaters on 25th January, 2024.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/Fighter.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Terminator Skynet Rising",
+        description: "Since Legion was destroyed, the machines have been working to restore Skynet. Now the resistance has discovered their plans and must find a way to prevent them.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Oct/Terminator Skynet Rising.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Lisa Frankenstein",
+        description: "In 1989, an unpopular high school girl named Lisa accidentally re-animates a handsome Victorian corpse during a lightning storm and starts to rebuild him into the man of her dreams by using the broken tanning bed in her garage.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Lisa Frankenstein.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Tiger's Apprentice",
+        description: "The story centers on a normal boy, Tom, who gets drawn into this world against his wishes when his eccentric grandmother who he lives with in San Francisco's Chinatown turns out to be the ... See full summary » ",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/Tiger's Apprentice.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Blade",
+        description: "Plot unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Sep/Blade.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Ordinary Angels",
+        description: "Inspired by the incredible true story of a hairdresser who single-handedly rallies an entire community to help a widowed father save the life of his critically ill young daughter.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Ordinary Angels.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Community: The Movie",
+        description: "Plot under wraps",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/deadpool 3.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Kalki 2898 AD",
+        description: "A modern-day avatar of Vishnu, a Hindu god, who is believed to have descended to earth to protect the world from evil forces.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/Kalki 2898 AD.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Furiosa",
+        description: "The origin story of renegade warrior Furiosa before she teamed up with Mad Max in 'Fury Road'",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/furiosa.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Kingdom Of The Planet Of The Apes",
+        description: "Follow Po on his wide-eyed adventures in ancient China, whose love of kung fu is matched only by an insatiable appetite.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/Kingdom of The Planet of Apes.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Kung Fu Panda 4",
+        description: "Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as Dragon Warrior. As such, he will train a new kung fu practitioner for the spot and will encounter a villain called the Chameleon who conjures villains from the past.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Mar/Kung Fu Panda 4.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Garfield",
+        description: "Animated feature film based on the popular comic strip about a sarcastic, lasagna-loving cat.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/Garfield.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Drive Away Dolls",
+        description: "Jamie regrets her breakup with her girlfriend, while Marian needs to relax. In search of a fresh start, they embark on an unexpected road trip to Tallahassee, but things quickly go awry when they cross paths with a group of inept criminals.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Drive Away Dolls.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Winnie The Pooh: Blood and Honey 2",
+        description: "The days of adventures and merriment have come to an end, as Christopher Robin, now a young man, has left Winnie-The-Pooh and Piglet to fend for themselves. As time passes, feeling angry and abandoned, the two become feral. After getting a taste for blood, Winnie-The-Pooh and Piglet set off to find a new source of food. It's not long before their bloody rampage begins",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Feb/Winnie the Pooh 2.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Lift",
+        description: "Follows a master thief and her ex-boyfriend who team up to steal $100 million in gold bullion being transported on a 777 passenger flight.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/jan/Lift.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Joker: Folie à Deux",
+        description: "Plot unknown. Sequel to the 2019 film 'Joker.'",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Oct/Joker Folie a Deux.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Bad Boys 4",
+        description: "Plot unknown. Fourth installment of the 'Bad Boys' film series.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jun/Bad Boys 4.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Flint Strong",
+        description: "A 17-year-old Claressa T-Rex Shields, a Flint, Mich, native whose dreams of becoming the first woman in history to win an Olympic gold medal in boxing were realized at the 2012 Summer Olympics in London. At the 2016 Summer Olympics in Rio, Shields won a second gold medal in womens middleweight boxing.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/Flint Strong.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Ballerina",
+        description: "A young female assassin seeks revenge against the people who killed her family.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jun/Ballerina.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Horizon: An American Saga",
+        description: "Chronicles a multi-faceted, 15-year span of pre-and post-Civil War expansion and settlement of the American west.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jun/horizon.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Inside Out 2",
+        description: "Follow Riley, in her teenage years encountering new emotions.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jun/Inside Out 2.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Mission Impossible Dead Reckonging: Part Two",
+        description: "The 8th entry in the long running Mission Impossible franchise.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/mission impossible part two.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Watchers",
+        description: "Follows Mina, a 28-year-old artist, as she gets stranded in an extensive, immaculate forest in western Ireland. After finding shelter, she becomes trapped alongside three strangers, stalked by mysterious creatures each night.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jun/the-watchers.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Captain America: Brave New World",
+        description: "Plot kept under wraps. Fourth movie in the Captain America franchise.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/captain america breve new world.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Despicable Me 4",
+        description: "Plot unknown. Fourth installment of the 'Despicable Me' franchise.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/Despicable me 4.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Twisters",
+        description: "An update to the 1996 film 'Twister', which centered on a pair of storm chasers who risk their lives in an attempt to test an experimental weather alert system.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jul/Twisters.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Guntar",
+        description: "Spider Girl vilocnk ejca eoc ejao c eeahfe fbuao rgfjab",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/guntar.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "BorderLands",
+        description: "A feature film based on the popular video game set on the abandoned fictional planet of Pandora where people search for a mysterious relic.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/BorderLands.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Speak No Evil",
+        description: "Remake of Speak No Evil (2022). A family invited to spend a weekend in an idyllic country house, go from a dream vacation to a psychological nightmare.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/speak no evil.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "BeetleJuice 2",
+        description: "This is a follow-up to the comedy Beetlejuice (1988), about a ghost who's recruited to help haunt a house.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Sep/Beetlejuice.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Iron Man 4",
+        description: "Spider Girl vilocnk ejca eoc ejao c eeahfe fbuao rgfjab",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/May/Iron Man 4.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Kraven The Hunter",
+        description: "Russian immigrant Sergei Kravinoff is on a mission to prove that he is the greatest hunter in the world.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/Kraven The Hunter.jpeg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Gladiator 2",
+        description: "Follows Lucius, the son of Maximus' love Lucilla, after Maximus' death.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Nov/Gladiator 2.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Sonic The Hedgehog 3",
+        description: "Plot under wraps",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Dec/sonic the hedgehog 3.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Pushpa 2 The Rule",
+        description: "Plot under wraps",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Aug/Pushpa 2 The Rule.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Lord Of The Rings: The War Of Rohirrim",
+        description: "The untold story behind Helm's Deep, hundreds of years before the fateful war, telling the life and bloodsoaked times of its founder, Helm Hammerhand, the King of Rohan.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Dec/the lord of the rings.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "ThunderBolts",
+        description: "A group of supervillains are recruited to go on missions for the government.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Dec/thunderbolts.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Lal Salaam",
+        description: "Plot Unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/Lal Salaam.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Book Of Clarence",
+        description: "Streetwise but down-on-his-luck, Clarence is struggling to find a better life for his family, while fighting to free himself of debt. Captivated by the power and glory of the rising Messiah and His apostles, he risks everything to carve his own path to a divine life, and ultimately discovers that the redemptive power of belief may be his only way out.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/The Book Of Clarence.jpg",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Master And Magarita",
+        description: "plot unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/Jan/Master And Magarita.png",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Singham Again",
+        description: "plot unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Spellbound",
+        description: "Spellbound follows the adventures of Ellian, the tenacious princess who must go on a daring quest to save her family and kingdom after a mysterious spell transforms her parents, the King and Queen of Lumbria, into monsters.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Untitled Alien Prequel",
+        description: "plot unknown.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Paddington in Peru",
+        description: "Follows Paddington and the Brown family as they visit Aunt Lucy in Peru, but a mystery sends them to the Amazon rainforest and up Peruvian mountains.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Spaceman",
+        description: "Jakub Procházka, orphaned as a boy and raised in the Czech countryside by his grandparents, overcomes his odds to become the country's first astronaut.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Instigators",
+        description: "Follows two robbers who must go on the run with the help of one of their therapists after a theft doesn't go as planned.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Land of Bad",
+        description: "Rookie field air support controller Kinney is embedded with a Delta Force team on a mission in the Philippines. When the team is trapped without weapons, the skills of Reaper, an Air Force drone pilot, become their only chance of survival.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Imaginary",
+        description: "A woman returns to her childhood home to discover that the imaginary friend she left behind is very real and unhappy that she abandoned him.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Nosferatu",
+        description: "A gothic tale of obsession between a haunted young woman in 19th century Germany and the ancient Transylvanian vampire who stalks her, bringing untold horror with him.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Terrifier 3",
+        description: "Plot kept under wraps.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "The Bricklayer",
+        description: "An ex-FBI agent is reactivated when an extortionist targets the agency.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "William Tell",
+        description: "In 14th Century Switzerland, a once peaceful hunter leads his people to rebellion after his family and country are threatened by a tyrannical Austrian King. The year is 1307 and the Holy Roman Empire is crumbling. As its grip on Europe loosens, new dynasties such as the Austrian Habsburg Family encroach on new lands, desperate for power. In Switzerland, the once peaceful country is overwhelmed and bows under the Austrian might as it advances and upends the quiet lives of the Swiss peasants.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Trap",
+        description: "Plot kept under wraps.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Imaginary",
+        description: "A woman returns to her childhood home to discover that the imaginary friend she left behind is very real and unhappy that she abandoned him.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Imaginary",
+        description: "A woman returns to her childhood home to discover that the imaginary friend she left behind is very real and unhappy that she abandoned him.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+      {
+        title: "Imaginary",
+        description: "A woman returns to her childhood home to discover that the imaginary friend she left behind is very real and unhappy that she abandoned him.",
+        downloadLink: "https://freenet5-downloadnotavailable.glitch.me/",
+        download: "NOT AVAILABLE",
+        posterURL: "imge/",
+        release_date: "2024",
+        media_type: "Movie"
+      },
+    ];
+
+    async function fetchMoviesFromAPI(searchTerm) {
+      try {
+        const fullApiUrl = `${apiUrl}search/movie?query=${searchTerm}&api_key=${apiKey}`;
+        const response = await fetch(fullApiUrl);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        return data.results;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        return [];
+      }
+    }
+
+    async function filterMovies() {
+  const searchTerm = document.getElementById("searchInput").value;
+  const movieList = document.getElementById("movieList");
+  movieList.innerHTML = "";
+
+  const matchingMovies = moviesWithDownloadLinks.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (matchingMovies.length > 0) {
+    matchingMovies.forEach((movieData) => {
+        const movieDetailsURL = `movie_details.html?title=${encodeURIComponent(movieData.title)}&description=${encodeURIComponent(movieData.description)}&download=${encodeURIComponent(movieData.download)}&poster=${encodeURIComponent(movieData.posterURL)}&year=${encodeURIComponent(movieData.release_date)}&downloadLink=${encodeURIComponent(movieData.downloadLink)}`;
+      movieList.innerHTML += `
+        <div class="movie">
+          <h2>Title: ${movieData.title}</h2>
+          <p>Year: ${movieData.release_date}</p>
+          <p>Type: ${movieData.media_type}</p>
+          <p>Description: ${movieData.description}</p>
+          <p>Download: ${movieData.download}</p>
+         <a class="more-info-button" href="${movieDetailsURL}" target="_blank">More Info</a>
+          <img src="${movieData.posterURL}" alt="${movieData.title} Poster">
+        </div>
+      `;
+    });
+  } else {
+    movieList.innerHTML ="<p>No results found.</p>";
+    }
+}
+  </script>
+</div>
+</body>
+</html>      

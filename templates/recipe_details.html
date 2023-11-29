@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 20px;
+        }
+
+        h2, h3 {
+            color: #e44d26;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            color: #e44d26;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        strong {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h2>Recipe Details</h2>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <h3>{{ recipe_details.title }}</h3>
+
+        {% if recipe_details.image %}
+        <img src="{{ recipe_details.image }}" alt="{{ recipe_details.title }}">
+    {% endif %}
+
+        <p><strong>Ingredients:</strong></p>
+        <ul>
+            {% for ingredient in recipe_details.extendedIngredients %}
+                <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            {% for step in recipe_details.analyzedInstructions[0].steps %}
+                <li>{{ step.step }}</li>
+            {% endfor %}
+        </ol>
+        {% if recipe_details.nutrition %}
+            <h4>Nutrition Information</h4>
+            <ul>
+                {% for nutrient in recipe_details.nutrition.nutrients %}
+                    <li>{{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% of Daily Needs)</li>
+                {% endfor %}
+            </ul>
+            <h4>Properties</h4>
+            <ul>
+                {% for prop in recipe_details.nutrition.properties %}
+                    <li>{{ prop.name }}: {{ prop.amount }} {{ prop.unit }}</li>
+                {% endfor %}
+            </ul>
+            <h4>Flavonoids</h4>
+            <ul>
+                {% for flavonoid in recipe_details.nutrition.flavonoids %}
+                    <li>{{ flavonoid.name }}: {{ flavonoid.amount }} {{ flavonoid.unit }}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Caloric Breakdown:</strong></p>
+            <ul>
+                <li>Protein: {{ recipe_details.nutrition.caloricBreakdown.percentProtein }}%</li>
+                <li>Fat: {{ recipe_details.nutrition.caloricBreakdown.percentFat }}%</li>
+                <li>Carbs: {{ recipe_details.nutrition.caloricBreakdown.percentCarbs }}%</li>
+            </ul>
+            <p><strong>Weight per Serving:</strong> {{ recipe_details.nutrition.weightPerServing.amount }} {{ recipe_details.nutrition.weightPerServing.unit }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

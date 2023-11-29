@@ -1,0 +1,341 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: url(img/image.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-attachment: fixed;
+}
+  
+.logo:hover img {
+    transform: rotate(360deg);
+    transition: 5s;
+}
+ 
+.twenty4 {
+    text-align: right;
+    font-size: larger;
+    color: lightskyblue;
+    transform: translate(-80%, -80%);
+}
+
+
+.inews a {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 1.5em;
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    transform: translate(400px, -1px);
+    
+}
+
+.inews a:hover {
+    color: #e44d26;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    list-style: none;
+}
+  
+.nav li {
+    margin: 0 10px;
+}
+
+  
+.nav li a {
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    text-transform: uppercase;
+}
+  
+h2 {
+    text-align: left;
+    color: #fff;
+    padding: 10px 0;
+    margin: 0;
+}
+  
+.content {
+    position: absolute;
+    top: 30%; /* Adjusted top value */
+    left: 50%;
+    color: #f5f5f5;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: large;
+}
+
+.content2 {
+    position: absolute;
+    top: 40%; /* Adjusted top value */
+    left: 50%;
+    color: #f5f5f5;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+  
+.content3 h4 {
+    position: absolute;
+    top: 22;
+    left: 50%;
+    color: white;
+    transform: translate(-100%, -80%);
+    text-transform: uppercase;
+    color: lightskyblue;
+}
+
+.release {
+    display: flex;
+    list-style: none;
+}
+
+.release li {
+    margin: 0 10px;
+}
+
+.release li a {
+    position: absolute;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    transform: translate(-70%, -70%);
+    text-transform: uppercase;
+    top: 15%;
+    left: 70%;  
+}
+
+.trail {
+    position: absolute;
+    top: 20%; /* Adjusted top value */
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.trailer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-47%, -47%);
+    z-index: 100000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(30px);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.trailer.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.trailer video {
+    max-width: 900px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.7);
+    border: 0.1rem solid rgb(255, 255, 255);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 103px;
+    cursor: pointer;
+    filter: invert(1);
+    width: 32px;
+}
+
+.search-bar {
+    top: 40%; /* Adjusted top value */
+    left: 50%;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+  
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+  
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+  
+#search-button {
+    background-color: #007BFF;
+    text-align: center;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+#search-button:hover {
+    background-color: #0056b3;
+}
+  
+.movie {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+.movie h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #0056b3;
+}
+  
+.movie p {
+    margin: 5px 0;
+}
+  
+.more-info-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+  
+.more-info-button:hover {
+    background-color: #555;
+}
+  
+.movie img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+  
+.search-results-container {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+#movieList {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+@media (max-width: 991px) {
+    header {
+        padding: 20px 50px;
+        flex-direction: column;
+    }
+    .navigation {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+    .trailer {
+        max-width: 120%;
+    }
+    .content {
+        transform: translate(-100%, -100%);
+        top: 0320px;
+    }
+    .trailer video {
+        max-width: 400px;
+    }
+    .twenty4 {
+        transform: translate(-10%, -10%);
+    }
+    .trail img {
+        transform: translate(10%, -00%);
+    }
+    .trail {
+        transform: translate(-10%, -10%);
+        top: 0111px;
+    }
+    .close {
+        top: 140px;
+        right: 40px;
+    }
+    .logo img {
+        transform: translate(-20%, -14%);
+    }
+    .nav li {
+        margin-top: 100px;
+        float: left;
+    }
+    .content2 {
+        margin-top: 10px;
+        top: 0500px;
+        right: px;
+        color:#f5f5f5;
+    }
+    .release li a {
+        position: absolute;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: lightskyblue;
+        text-transform: uppercase;
+        transform: translate(-20%, -40%);
+        top: 50%;
+        left: 70%;  
+    }
+}
+
+
+@media (max-width: 991px) {
+  
+    .inews a {
+        display: inline-block;
+        margin-right: 20px;
+        font-size: 1.5em;
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        transform: translate(20px, -1px);
+        top: 100px;
+    }
+
+.inews li a{
+    transform: translate(-40px, 100px);
+    top: 10px;
+}
+
+    .inews a:hover {
+        color: #e44d26;
+        text-decoration: none;
+    }
+    }

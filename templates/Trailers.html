@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailers ||</title>
+    <link rel="stylesheet" href="Trailers.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+   <header>
+    <a href="" class="logo">
+      <img src="img/cooltext445071794435959.png" alt="6Weeks" />
+    </a>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Tvseries.html">Tv Series</a></li>
+    </ul>
+  </header>
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search...">
+    <button id="search-button" onclick="filterMovies()">
+      <i class="fas fa-search search-icon"></i>
+    </button>     
+  </div>
+  <p class="trail">OFFICIAL TRAILERS</p>
+  <div class="video-container">
+    <div class="video">
+      <video src="vid/Dooplay Theme License Key Free.mp4" class="vim" controls></video>
+      <p class="video-title">Madame Web</p>
+    </div>
+    <div class="video">
+      <video src="vid/How To Add Google Adsense To Your WordPress Website in 2023.mp4" class="vim" controls></video>
+      <p class="video-title">inside out</p>
+    </div>
+    <div class="video">
+    <video src="vid/How to create a Free Movie Website and Earn money_Create Movies Website on  Google Site.mp4" class="vim" controls></video>
+    <p class="video-title">the marvels</p>
+  </div>
+    <div class="video">
+    <video src="vid/How to create A Movie and Live TV Website Using WordPress (Intro).mp4" class="vim" controls></video>
+    <p class="video-title">dr strange</p>
+  </div>
+    <div class="video">
+    <video src="vid/Python program of Bank Application _ Deposit, Withdraw, Display Method _ Python program using Class.mp4" class="vim" controls></video>
+    <p class="video-title">spiderman</p>
+  </div>
+    <div class="video">
+      <video src="vid/Python Tkinter Loading Screen _ Splash Screen In Python Tkinter [ with Progress Bar ] Python GUI.mp4" class="vim" controls></video>
+    <p class="video-title">black panther</p>
+  </div>
+    <div class="video">
+    <video src="vid/Responsive Search Bar with HTML CSS.mp4" class="vim" controls></video>
+    <p class="video-title">robin</p>
+  </div>
+    <div class="video">
+    <video src="vid/Shiny Text animation effect  Shining text animation.mp4" class="vim" controls></video>
+    <p class="video-title">nightwing</p>
+  </div>
+    <div class="video">
+    <video src="vid/Shiny Text animation effect  Shining text animation.mp4" class="vim" controls></video>
+    <p class="video-title">nightwing 2</p>
+  </div>
+  <div class="video">
+    <video src="vid/Shiny Text animation effect  Shining text animation.mp4" class="vim" controls></video>
+    <p class="video-title">nightwing 3</p>
+  </div>
+</div>
+  <script>
+    document.getElementById("searchInput").addEventListener("keyup", function(event) {
+      if (event.key === "Enter" || event.keyCode === 13) {
+        event.preventDefault();
+        filterMovies();
+      }
+    });
+
+    function filterMovies() {
+  const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+  const videos = document.querySelectorAll(".vim");
+
+  videos.forEach((video, index) => {
+    const videoTitle = video.nextElementSibling.textContent.toLowerCase();
+    const videoContainer = video.parentElement;
+
+    if (videoTitle.includes(searchTerm)) {
+      videoContainer.style.display = "block";
+    } else {
+      videoContainer.style.display = "none";
+    }
+  });
+}
+  </script>
+  <pre>
+    <p style="color: aliceblue;">hbhl</p>
+  </pre>
+</body>
+</html>
